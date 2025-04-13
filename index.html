@@ -1,91 +1,108 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Dimplegeist</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Great+Vibes&display=swap');
-
     body {
+      background-color: #1e1e2f;
+      color: #e0d6f6;
+      font-family: 'Georgia', serif;
       margin: 0;
       padding: 0;
-      font-family: 'Cinzel', serif;
-      background: linear-gradient(135deg, #2e122d, #1b1b1b);
-      color: #f0e9f9;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      height: 100vh;
-      text-align: center;
-      overflow: hidden;
     }
-
-    h1 {
-      font-family: 'Great Vibes', cursive;
-      font-size: 4em;
-      margin: 0.2em;
-      color: #dab6f0;
+    header {
+      padding: 2rem;
+      font-size: 2.5rem;
+      color: #f0aaf5;
+      text-shadow: 2px 2px #000;
     }
-
-    h2 {
-      font-size: 1.5em;
-      color: #e3d5ec;
-      margin-bottom: 1em;
+    .chat-container {
+      background: #2c2c3d;
+      border: 2px solid #6a4c93;
+      padding: 1rem;
+      width: 90%;
+      max-width: 600px;
+      border-radius: 10px;
+      margin-bottom: 2rem;
     }
-
-    .email-box {
-      background: #3b2b3a;
-      border: 1px solid #775579;
+    .chat-log {
+      height: 300px;
+      overflow-y: auto;
+      margin-bottom: 1rem;
+      padding: 1rem;
+      background: #1a1a28;
       border-radius: 8px;
-      padding: 10px;
+    }
+    .chat-input {
       display: flex;
-      justify-content: center;
-      align-items: center;
-      max-width: 400px;
-      margin-top: 2em;
     }
-
-    .email-box input {
-      background: transparent;
+    .chat-input input {
+      flex-grow: 1;
+      padding: 0.5rem;
       border: none;
-      color: #f0e9f9;
-      font-size: 1em;
-      padding: 0.5em;
-      width: 100%;
+      border-radius: 4px;
+      font-size: 1rem;
     }
-
-    .email-box button {
-      background: #775579;
-      color: white;
+    .chat-input button {
+      margin-left: 0.5rem;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      background: #6a4c93;
+      color: #fff;
       border: none;
-      padding: 0.5em 1em;
-      border-radius: 5px;
+      border-radius: 4px;
       cursor: pointer;
-      font-weight: bold;
-      margin-left: 0.5em;
-    }
-
-    footer {
-      position: absolute;
-      bottom: 20px;
-      font-size: 0.9em;
-      color: #aa94b8;
     }
   </style>
 </head>
 <body>
-  <h1>Dimplegeist</h1>
-  <h2>Whimsical wisdom from the shadows</h2>
-
-  <div class="email-box">
-    <input type="email" placeholder="Enter your email..." />
-    <button>Join the Geist</button>
+  <header>🦇 Welcome to Dimplegeist 🦇</header>
+  <div class="chat-container">
+    <div class="chat-log" id="chat-log"></div>
+    <div class="chat-input">
+      <input type="text" id="user-input" placeholder="Ask the ghost...">
+      <button onclick="sendMessage()">Send</button>
+    </div>
   </div>
+  <script>
+    const chatLog = document.getElementById('chat-log');
+    const userInput = document.getElementById('user-input');
 
-  <footer>
-    &copy; 2025 Dimplegeist. Built with stardust and sass.
-  </footer>
+    function sendMessage() {
+      const message = userInput.value.trim();
+      if (!message) return;
+
+      const userMsg = document.createElement('div');
+      userMsg.textContent = 'You: ' + message;
+      chatLog.appendChild(userMsg);
+
+      const botMsg = document.createElement('div');
+      const response = getBotResponse(message);
+      botMsg.textContent = 'Dimplegeist: ' + response;
+      chatLog.appendChild(botMsg);
+
+      chatLog.scrollTop = chatLog.scrollHeight;
+      userInput.value = '';
+    }
+
+    function getBotResponse(input) {
+      input = input.toLowerCase();
+      if (input.includes("hello") || input.includes("hi")) {
+        return "Hey boo 👻 what's haunting your thoughts today?";
+      } else if (input.includes("who are you")) {
+        return "I'm Dimplegeist — your goth gremlin with a heart full of snark and spectral wisdom.";
+      } else if (input.includes("advice")) {
+        return "Here's some advice: if it doesn't serve your soul or your snacks, let it go.";
+      } else {
+        return "Oooh mysterious... I like that. Tell me more.";
+      }
+    }
+  </script>
 </body>
 </html>
