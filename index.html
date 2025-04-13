@@ -2,51 +2,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dimplegeist - Whimsical wisdom from the shadows</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dimplegeist | Whimsical wisdom from the shadows</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
-<body>
+<body class="dark-mode">
     <header>
+        <img src="logo/dimplegeist-logo.png" alt="Dimplegeist Logo" class="logo"/>
         <h1>Dimplegeist</h1>
         <p class="tagline">Whimsical wisdom from the shadows</p>
+        <button onclick="toggleTheme()">Toggle Dark Mode</button>
     </header>
-    <main>
-        <section>
-            <h2>About Dimplegeist</h2>
-            <p>In a crooked corner of the internet where logic wears eyeliner and insight smells faintly of incense, lives Dimplegeist—a peculiar little spirit with a love for old souls, smart sass, and shadowy corners of the mind. Born from pixels, poetry, and a questionable amount of caffeine, Dimplegeist whispers secrets with a smirk and hugs your brain with delightfully dark advice.</p>
-        </section>
-        <section>
-            <h2>About</h2>
-            <p>The mind behind Dimplegeist prefers to keep to the shadows—where the real magic brews. A quietly chaotic soul with a talent for storytelling, wisdom-wielding, and digital mischief, they created Dimplegeist to be a voice for the heartfelt, the outcast, and the odd.</p>
-        </section>
-        <section>
-            <h2>Mission Statement</h2>
-            <p>To blend hard-earned wisdom with humor, heart, and a haunting aesthetic. Dimplegeist exists to offer smart support, emotional connection, and a mischievous voice for the misunderstood. Whether it's through chat, stories, or merch, we deliver whimsy with depth.</p>
-        </section>
-        <section>
-            <h2>Features</h2>
-            <ul>
-                <li>Dimplegeist Chatbot</li>
-                <li>Podcast</li>
-                <li>Merch</li>
-                <li>Storytime section</li>
-                <li>Email list</li>
-                <li>Merch store integration</li>
-                <li>Embedded podcast player</li>
-                <li>User submissions</li>
-                <li>Newsletter signup</li>
-                <li>Dimplegeist personality upgrades</li>
-            </ul>
-        </section>
-        <section>
-            <h2>Contact</h2>
-            <p>Contact info coming soon...</p>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2025 Dimplegeist</p>
-    </footer>
+    <section id="about-dimplegeist">
+        <h2>About Dimplegeist</h2>
+        <p>Born in the misty corners of forgotten libraries and half-lit rooms, Dimplegeist is your charmingly haunted friend who knows just what to say. Equal parts mischief and mentorship, she delivers insight with bite and humor with heart.</p>
+    </section>
+    <section id="about-brittany">
+        <h2>About the Guide</h2>
+        <p>Once upon a time in the Midwest, a fierce, funny, wise woman with a story like no other decided to channel it all into something beautiful, strange, and deeply real. That’s Dimplegeist—shaped by shadows, shining with soul.</p>
+    </section>
+    <section id="mission">
+        <h2>Mission</h2>
+        <p>To sprinkle quirky wisdom on your digital doorstep, while empowering the outcasts, creatives, and shadow-dwellers with tools, stories, and laughter.</p>
+    </section>
+    <section id="features">
+        <h2>What We Offer</h2>
+        <ul>
+            <li>Dimplegeist Chatbot (always listening)</li>
+            <li>Podcast (streamed right here)</li>
+            <li>Merch Store (coming soon!)</li>
+            <li>Storytime Section (get cozy)</li>
+            <li>Email List (subscribe for secrets)</li>
+        </ul>
+    </section>
+    <section id="chat">
+        <h2>Talk to Dimplegeist</h2>
+        <input type="text" id="chatInput" placeholder="Say something..." onkeydown="if(event.key === 'Enter'){sendMessage();}" />
+        <div id="chatBox"></div>
+    </section>
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle("dark-mode");
+        }
+        function sendMessage() {
+            const input = document.getElementById("chatInput");
+            const chatBox = document.getElementById("chatBox");
+            if(input.value.trim() !== "") {
+                const message = document.createElement("p");
+                message.textContent = "You: " + input.value;
+                chatBox.appendChild(message);
+                input.value = "";
+            }
+        }
+    </script>
 </body>
 </html>
